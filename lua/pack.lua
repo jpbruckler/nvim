@@ -124,12 +124,6 @@ MiniSnippets.setup({
     snippets = {
         MiniSnippets.gen_loader.from_lang(), -- loads friendly-snippets
     },
-    -- disable empty tabstop indicators
-    expand = {
-        insert = function(snippet)
-            MiniSnippets.default_insert(snippet, { empty_tabstop = "" })
-        end,
-    },
 })
 MiniSnippets.start_lsp_server({ match = false })
 
