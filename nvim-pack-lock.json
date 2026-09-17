@@ -6,7 +6,7 @@
     },
     "fzf-lua": {
       "rev": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e",
-      "src": "https://www.github.com/ibhagwan/fzf-lua"
+      "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
@@ -22,7 +22,7 @@
     },
     "nvim-lspconfig": {
       "rev": "ac9d2f7c4757db6320cab6697fe73e5e8adb2457",
-      "src": "https://www.github.com/neovim/nvim-lspconfig"
+      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
       "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
