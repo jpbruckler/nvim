@@ -22,10 +22,14 @@ vim.pack.add({
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
     version = "main",
   },
+
+  "https://github.com/obsidian-nvim/obsidian.nvim",
+
   -- Language Server Protocols
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
-  "https://github.com/obsidian-nvim/obsidian.nvim",
+  "https://github.com/mason-org/mason-lspconfig.nvim",
+  "https://github.com/theleop/powershell.nvim",
 })
 
 -- :PackAdd / :PackDel / :PackUpdate
@@ -57,3 +61,4 @@ require("plugins.treesitter")
 require("plugins.mini")
 require("plugins.fzf")
 require("plugins.lualine")
+require("plugins.powershell")

@@ -74,7 +74,7 @@ nvim
 ### 4. Language servers and tools (Mason)
 
 ```vim
-:MasonInstall lua-language-server bash-language-server pyright ruff rust-analyzer shellcheck shfmt
+MasonInstall lua-language-server bash-language-server pyright ruff rust-analyzer shellcheck shfmt
 ```
 
 | Mason package | Used by | Notes |

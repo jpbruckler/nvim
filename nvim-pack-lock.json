@@ -1,16 +1,24 @@
 {
   "plugins": {
+    "efmls-configs-nvim": {
+      "rev": "f145a2e8212a195d44c1430e76cbc96efb0afb08",
+      "src": "https://github.com/creativenull/efmls-configs-nvim"
+    },
     "friendly-snippets": {
       "rev": "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e",
+      "rev": "02bc882f208f3481aa959dbbee8ce5edad2fd8b2",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "49b16d699f9ca83184330c6eb886737a27f23bdd",
+      "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
@@ -21,8 +29,12 @@
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "ac9d2f7c4757db6320cab6697fe73e5e8adb2457",
+      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
       "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-tree.lua": {
+      "rev": "8d814495983e8db87d02d2f1da293f25b2fd1bdc",
+      "src": "https://www.github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
       "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
@@ -30,8 +42,12 @@
       "version": "'main'"
     },
     "obsidian.nvim": {
-      "rev": "7ab3ba0ecb33bad2f7b72175c9bbab62a8c82c83",
+      "rev": "ce5936f0b0e781442c30c5f91d4acaf85c6455a0",
       "src": "https://github.com/obsidian-nvim/obsidian.nvim"
+    },
+    "powershell.nvim": {
+      "rev": "faafb829db0979b4a5962fe0d10a58830413bcd2",
+      "src": "https://github.com/theleop/powershell.nvim"
     },
     "vim-moonfly-colors": {
       "rev": "2c883835f5b7b380a0a9e80695c420f7efebdfe4",

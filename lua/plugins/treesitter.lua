@@ -19,6 +19,7 @@ local setup_treesitter = function()
     "lua",
     "markdown",
     "python",
+    "powershell",
     "typescript",
     "vue",
     "svelte",
