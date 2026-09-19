@@ -11,6 +11,7 @@ lua/
   options.lua            editor options (only non-defaults)
   autocmds.lua           yank highlight, per-filetype tweaks
   keymaps.lua            mappings that don't depend on a plugin
+  terminal.lua           floating terminal (<C-\> toggles, <C-q> leaves terminal mode)
   pack.lua               PackChanged hook, plugin list, :Pack* commands, plugin configs
   lsp.lua                Mason, language servers, diagnostics, LSP keymaps
   plugins/
@@ -18,11 +19,18 @@ lua/
     mini.lua             mini.nvim modules (files, completion, snippets, diff, clue, ...)
     fzf.lua              fzf-lua + <leader>f* keymaps
     lualine.lua          statusline
+    powershell.lua       powershell.nvim (starts its own powershell_es client)
+ftplugin/
+  ps1.lua                PowerShell keymaps: <leader>lt terminal, g= eval
 ```
 
-## New machine setup (macOS)
+## New machine setup
+
+Step 1 is per-OS; steps 2 onward are the same everywhere.
 
 ### 1. Host packages
+
+#### macOS
 
 ```sh
 xcode-select --install          # C compiler (treesitter parsers), git, make
@@ -51,6 +59,38 @@ Mason also needs `curl`, `unzip`, `tar` and `gzip`. macOS already has them.
 | Node.js | Mason: `pyright`, `bash-language-server` |
 | Nerd Font | icons |
 | rustup | Rust toolchain; optionally `rust-analyzer` |
+
+#### Windows
+
+```powershell
+winget install Neovim.Neovim
+winget install Git.Git
+winget install Microsoft.PowerShell          # pwsh 7+; 'shell' is set to pwsh in options.lua
+winget install BurntSushi.ripgrep.MSVC sharkdp.fd junegunn.fzf
+winget install OpenJS.NodeJS.LTS
+winget install tree-sitter.tree-sitter       # treesitter parser builds
+winget install Rustlang.Rustup              # skip if you don't write Rust
+```
+
+Parser builds also need a C compiler: install Visual Studio Build Tools with the
+"Desktop development with C++" workload, or `winget install LLVM.LLVM` and use
+clang. Install a Nerd Font from <https://nerdfonts.com> and set it in Windows
+Terminal.
+
+The config goes in `$env:LOCALAPPDATA\nvim` on Windows:
+
+```powershell
+git clone https://github.com/jpbruckler/nvim.git $env:LOCALAPPDATA\nvim
+```
+
+#### Arch Linux
+
+```sh
+sudo pacman -S neovim git base-devel tree-sitter-cli fzf ripgrep fd nodejs npm rustup
+sudo pacman -S wl-clipboard          # or xclip on X11 — needed for clipboard=unnamedplus
+sudo pacman -S ttf-jetbrains-mono-nerd   # or any Nerd Font
+```
+
 
 ### 2. Clone the config
 
@@ -92,6 +132,25 @@ MasonInstall lua-language-server bash-language-server pyright ruff rust-analyzer
 first on Neovim's PATH, so a Mason copy always wins over the rustup one. The
 rustup version stays in step with your toolchain.
 
+### 4b. PowerShell (Windows)
+
+`powershell_es` (PowerShell Editor Services) is installed automatically by
+mason-lspconfig on first start; `:Mason` shows the progress. powershell.nvim
+starts that server itself, which is why `lsp.lua` doesn't list it in
+`vim.lsp.enable()` and mason-lspconfig is told to skip it.
+
+In a `.ps1` buffer:
+
+| Key | Action |
+|---|---|
+| `<leader>lt` | Toggle the PowerShell Extension Terminal |
+| `<leader>lD` | Toggle the debug terminal (needs nvim-dap) |
+| `g=` + motion | Evaluate that text in the terminal |
+| `g==` | Evaluate the current line |
+
+The Extension Terminal shares the language server's session, so variables you
+set there are visible to completion and hover.
+
 ### 5. Verify
 
 ```sh
@@ -106,6 +165,13 @@ Then inside Neovim:
 
 Open a Lua, Python, shell and Rust file and check that `:checkhealth vim.lsp`
 shows a client attached for each.
+
+## Terminal
+
+`<C-\>` toggles a floating terminal running `'shell'` (pwsh on Windows, `$SHELL`
+elsewhere). Toggling hides the window, so the shell keeps running and the
+scrollback is preserved. `<C-q>` leaves terminal mode, because the `<C-\>`
+mapping shadows the builtin `<C-\><C-n>`.
 
 ## Keeping machines in sync
 

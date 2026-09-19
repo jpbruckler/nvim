@@ -9,10 +9,9 @@ require("mason").setup()
 
 require("mason-lspconfig").setup({
     ensure_installed = { "powershell_es" }, -- auto-install
-})
-
-require('powershell').setup({
-  bundle_path = vim.fn.stdpath "data" .. "/mason/packages/powershell-editor-services",
+    -- powershell.nvim starts powershell_es itself (see plugins/powershell.lua);
+    -- letting mason-lspconfig enable it too would start a second client.
+    automatic_enable = { exclude = { "powershell_es" } },
 })
 
 -- Lua: tell lua_ls this is Neovim's LuaJIT and where the `vim` API lives.
@@ -34,7 +33,6 @@ vim.lsp.enable({
     "pyright",       -- Mason: pyright (needs Node)
     "rust_analyzer", -- Mason: rust-analyzer, or `rustup component add rust-analyzer`
     "ruff",          -- Mason: ruff
-    "powershell-editor-services",
 })
 
 -- Diagnostics: inline messages are off by default since Neovim 0.11.

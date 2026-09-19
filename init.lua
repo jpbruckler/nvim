@@ -10,6 +10,7 @@ msg = {
 require("options")
 require("autocmds")
 require("keymaps")
+require("terminal")
 require("pack")
 require("lsp")
 

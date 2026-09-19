@@ -42,3 +42,14 @@ vim.opt.wildmode = "longest:full,full" -- complete longest common match, full co
 vim.opt.diffopt:append("linematch:60") -- improve diff display
 vim.opt.redrawtime = 10000 -- increase neovim redraw tolerance
 vim.opt.maxmempattern = 20000 -- increase max memory
+
+-- Windows: use PowerShell for :!, :terminal and the floating terminal
+if vim.fn.has("win32") == 1 then
+  vim.o.shell = "pwsh"
+  vim.o.shellcmdflag =
+  "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+  vim.o.shellredir = '2>&1 | %{ "$_" } | Out-File %s; exit $LastExitCode'
+  vim.o.shellpipe = '2>&1 | %{ "$_" } | Tee-Object %s; exit $LastExitCode'
+  vim.o.shellquote = ""
+  vim.o.shellxquote = ""
+end
